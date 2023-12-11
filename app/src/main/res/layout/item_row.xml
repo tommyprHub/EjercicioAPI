@@ -6,6 +6,7 @@
     android:layout_margin="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/dataRoot"
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:layout_marginTop="50dp"
@@ -99,5 +100,29 @@
             android:textStyle="bold"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/imgRoot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/dataRoot"
+        app:layout_constraintBottom_toBottomOf="@id/dataRoot"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="20dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgMovie"
+            android:layout_width="130dp"
+            android:layout_height="190dp"
+            android:scaleType="fitXY"
+            android:background="@color/white"
+            app:shapeAppearanceOverlay="@style/RoundedImageView"
+            app:srcCompat="@drawable/poster_placeholder"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
