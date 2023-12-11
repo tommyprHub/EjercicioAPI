@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/bg_raw"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidLine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="180dp"/>
+        <TextView
+            android:id="@+id/tvTitulo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:text="Nombre Peli"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@color/marronClaro"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guidLine"
+            android:layout_marginStart="10dp"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView
+            android:id="@+id/ivStar"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/round_star_24"
+            android:layout_marginStart="10dp"
+            app:layout_constraintStart_toStartOf="@id/guidLine"
+            app:layout_constraintTop_toBottomOf="@id/tvTitulo"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/ivStar"
+            android:text="texto estrella"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintTop_toTopOf="@id/ivStar"
+            app:layout_constraintBottom_toBottomOf="@id/ivStar"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <ImageView
+            android:id="@+id/ivLeng"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/baseline_language_24"
+            app:layout_constraintStart_toStartOf="@id/guidLine"
+            app:layout_constraintTop_toBottomOf="@id/ivStar"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/ivLeng"
+            android:text="texto lenguaje"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintTop_toTopOf="@id/ivLeng"
+            app:layout_constraintBottom_toBottomOf="@id/ivLeng"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <ImageView
+            android:id="@+id/ivDate"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/baseline_date_range_24"
+            app:layout_constraintStart_toStartOf="@id/guidLine"
+            app:layout_constraintTop_toBottomOf="@id/ivLeng"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/ivDate"
+            android:text="texto fecha"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintTop_toTopOf="@id/ivDate"
+            app:layout_constraintBottom_toBottomOf="@id/ivDate"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
