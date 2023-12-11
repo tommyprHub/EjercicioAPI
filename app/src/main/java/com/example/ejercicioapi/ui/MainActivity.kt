@@ -1,15 +1,14 @@
-package com.example.ejercicioapi
-
+package com.example.ejercicioapi.ui
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.ejercicioapi.adapter.MoviesAdapter
-import com.example.ejercicioapi.api.ApiClient
-import com.example.ejercicioapi.api.ApiService
-import com.example.ejercicioapi.databinding.ActivityMainBinding
-import com.example.ejercicioapi.response.MoviesListResponse
+import com.ezatpanah.retrofit_youtube.adapter.MoviesAdapter
+import com.ezatpanah.retrofit_youtube.api.ApiClient
+import com.ezatpanah.retrofit_youtube.api.ApiServices
+import com.ezatpanah.retrofit_youtube.databinding.ActivityMainBinding
+import com.ezatpanah.retrofit_youtube.response.MoviesListResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -17,10 +16,13 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val moviesAdapter by lazy { MoviesAdapter()}
-    private val api : ApiService by lazy {
-        ApiClient().getClient().create(ApiService::class.java)
+
+    private val moviesAdapter by lazy { MoviesAdapter() }
+
+    private val api: ApiServices by lazy {
+        ApiClient().getClient().create(ApiServices::class.java)
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,15 +31,13 @@ class MainActivity : AppCompatActivity() {
         //InitViews
         binding.apply {
             //show loading
-            prgBarMovie.visibility = View.VISIBLE
+            prgBarMovies.visibility = View.VISIBLE
             //Call movies api
             val callMoviesApi = api.getPopularMovie(1)
-
             callMoviesApi.enqueue(object : Callback<MoviesListResponse> {
                 override fun onResponse(call: Call<MoviesListResponse>, response: Response<MoviesListResponse>) {
-                    prgBarMovie.visibility = View.GONE
+                    prgBarMovies.visibility = View.GONE
                     when (response.code()) {
-
                         in 200..299 -> {
                             Log.d("Response Code", " success messages : ${response.code()}")
                             response.body()?.let { itBody ->
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
                                     if (itData.isNotEmpty()) {
                                         moviesAdapter.differ.submitList(itData)
                                         //Recycler
-                                        rvMovie.apply {
+                                        rlMovies.apply {
                                             layoutManager = LinearLayoutManager(this@MainActivity)
                                             adapter = moviesAdapter
                                         }
@@ -63,11 +63,10 @@ class MainActivity : AppCompatActivity() {
                             Log.d("Response Code", " Server error responses : ${response.code()}")
                         }
                     }
-
                 }
 
                 override fun onFailure(call: Call<MoviesListResponse>, t: Throwable) {
-                    prgBarMovie.visibility = View.GONE
+                    prgBarMovies.visibility = View.GONE
                     Log.e("onFailure", "Err : ${t.message}")
                 }
             })
